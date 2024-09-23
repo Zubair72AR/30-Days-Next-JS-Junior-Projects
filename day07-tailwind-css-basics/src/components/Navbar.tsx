@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { CgMenuRight } from "react-icons/cg";
+import { DiVim } from "react-icons/di";
 
 export default function Navbar() {
   return (
@@ -7,7 +9,7 @@ export default function Navbar() {
         <Link href="/" className="text-2xl py-6 font-semibold text-white">
           Zubair AR
         </Link>
-        <div>
+        <div className="hidden md:block">
           <Link
             href="/"
             className="uppercase text-white text-xs tracking-wide mx-1.5 hover:border-b-2"
@@ -45,6 +47,7 @@ export default function Navbar() {
             COntact US
           </Link>
         </div>
+        <CgMenuRight className=" text-white text-2xl block md:hidden" />
       </nav>
     </div>
   );

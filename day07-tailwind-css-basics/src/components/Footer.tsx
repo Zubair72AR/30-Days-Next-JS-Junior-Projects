@@ -12,7 +12,7 @@ import {
 export default function Header() {
   return (
     <div className="bg-zinc-950 w-screen fixed bottom-0 flex flex-col justify-center items-center">
-      <div className="flex text-lg space-x-2 my-10 md:space-x-10">
+      <div className="flex text-lg space-x-4 my-10 md:space-x-10">
         <FaFacebookF className="w-9 h-9 p-2 rounded-full text-xs bg-white text-blue-800 transition ease delay-150 hover:text-white hover:bg-blue-800" />
         <FaLinkedinIn className="w-9 h-9 p-2 rounded-full text-xs bg-white text-blue-800 transition ease delay-150 hover:text-white hover:bg-blue-800" />
         <FaTwitter className="w-9 h-9 p-2 rounded-full text-xs bg-white text-blue-800 transition ease delay-150 hover:text-white hover:bg-blue-800" />

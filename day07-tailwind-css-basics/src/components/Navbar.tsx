@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { CgMenuRight } from "react-icons/cg";
+import { RxCross2 } from "react-icons/rx";
 
 export default function Navbar() {
   let [isOpen, setIsOpen] = useState(false);
@@ -12,72 +13,76 @@ export default function Navbar() {
       menuClasses = [
         "flex",
         "absolute",
-        "top-[60px]",
-        "bg-gray-800",
+        "top-20",
+        "bg-blue-800",
         "w-full",
-        "p-4",
+        "p-8",
         "left-0",
-        "gap-10",
+        "gap-2",
         "flex-col",
+        "md:block",
+        "md:relative",
+        "md:top-0",
+        "md:w-auto",
       ];
     } else {
-      menuClasses = ["hidden", "md:flex", "md:gap-10"];
+      menuClasses = ["hidden", "md:block"];
     }
     return menuClasses.join(" ");
   }
   return (
     <div>
-      <nav className=" flex justify-between items-center px-4 w-100% bg-blue-800 sm:px-10">
+      <nav className=" flex justify-between items-center px-10 w-100% bg-blue-800">
         <Link href="/" className="text-2xl py-6 font-semibold text-white">
           Zubair AR
         </Link>
         <div className={getMenuClasses()}>
           <Link
             href="/"
-            className="uppercase text-white text-xs tracking-wide mx-1.5 hover:border-b-2"
+            className="uppercase text-white text-xs tracking-wide mx-1.5 hover:text-blue-200"
           >
             Home
           </Link>
           <Link
-            href="/"
-            className="uppercase text-white text-xs tracking-wide mx-1.5 hover:border-b-2"
+            href="/about"
+            className="uppercase text-white text-xs tracking-wide mx-1.5 hover:text-blue-200"
           >
             About
           </Link>
           <Link
-            href="/"
-            className="uppercase text-white text-xs tracking-wide mx-1.5 hover:border-b-2"
+            href="/career"
+            className="uppercase text-white text-xs tracking-wide mx-1.5 hover:text-blue-200"
           >
             Career
           </Link>
           <Link
-            href="/"
-            className="uppercase text-white text-xs tracking-wide mx-1.5 hover:border-b-2"
+            href="/skills"
+            className="uppercase text-white text-xs tracking-wide mx-1.5 hover:text-blue-200"
           >
             Skills
           </Link>
           <Link
-            href="/"
-            className="uppercase text-white text-xs tracking-wide mx-1.5 hover:border-b-2"
+            href="/portfolio"
+            className="uppercase text-white text-xs tracking-wide mx-1.5 hover:text-blue-200"
           >
             Portfolio
           </Link>
           <Link
-            href="/"
-            className="uppercase text-white text-xs tracking-wide mx-1.5 hover:border-b-2"
+            href="/contact-us"
+            className="uppercase text-white text-xs tracking-wide mx-1.5 hover:text-blue-200"
           >
-            COntact US
+            Contact US
           </Link>
         </div>
-        <div className="md:hidden flex items-center">
-          <button
-            onClick={() => {
-              setIsOpen(!isOpen);
-            }}
-          >
-            <CgMenuRight className=" text-white text-2xl block md:hidden cursor-pointer" />
-          </button>
-        </div>
+
+        <button
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
+          className=" text-white text-2xl md:hidden cursor-pointer"
+        >
+          {isOpen ? <RxCross2 /> : <CgMenuRight />}
+        </button>
       </nav>
     </div>
   );

@@ -2,26 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+.main__div {
+  margin: 3rem auto;
+  text-align: center;
+  width: 30rem;
+  border: 2px solid #e3e3e3;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 5px 5px 10px #9d9d9d;
+}
+.main__div h1 {
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #0f172a;
+}
+.main__div span {
+  color: crimson;
+}
+.main__div p {
+  font-size: 0.9rem;
+
+  color: #0f172a;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.navtext {
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
 }
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.navtext:hover {
+  color: rgb(192, 227, 255);
 }
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.active {
+  text-transform: uppercase;
+  font-weight: 500;
+  color: crimson;
 }

@@ -1,8 +1,8 @@
-export default function Home() {
+export default function Contact() {
   return (
     <div className="main__div">
       <h1>
-        Next <span>js</span>
+        Contact <span>Us</span>
       </h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae

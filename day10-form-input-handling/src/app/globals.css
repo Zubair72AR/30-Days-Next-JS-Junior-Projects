@@ -21,11 +21,20 @@ label span {
 }
 input,
 textarea {
+  outline: none;
   width: 100%;
   border: 1px solid #d7d7d7;
   padding: 0.5rem 0.8rem;
   margin-top: 0.2rem;
   margin-bottom: 1rem;
+}
+input:focus {
+  background-color: #222a35;
+  color: white;
+}
+textarea:focus {
+  background-color: #222a35;
+  color: white;
 }
 button {
   width: 30%;

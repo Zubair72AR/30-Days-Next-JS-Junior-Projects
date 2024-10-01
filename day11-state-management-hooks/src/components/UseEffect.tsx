@@ -2,19 +2,22 @@
 import React, { useState, useEffect } from "react";
 
 export default function ToggleTextComponent() {
-  let [isVisible, SetIsVisible] = useState(false);
+  let [isVisible, SetIsVisible] = useState(true);
   let changeText = () => {
     SetIsVisible((prev) => !prev);
   };
-  let changeColor = "Red";
+  useEffect(() => {
+    alert("Fetching Data by UseEffect");
+  }, [isVisible]);
+
   return (
     <div className="flex flex-col justify-center items-center mt-10">
-      <button onClick={changeText} className="w-32 h-12 bg-red-600">
-        {isVisible ? "Show" : "Hide"}
+      <button onClick={changeText} className="w-32 h-12 bg-red-600 font-bold">
+        {isVisible ? "Hide" : "Show"}
       </button>
-      <p className="mt-4 w-80">
+      <p className="mt-4 w-80 text-center">
         {isVisible
-          ? "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus cumquequae natus exercitationem reprehenderit, ipsa ut aperiam doloribus?facilis cupiditate est eos dicta commodi esse placeat, modi abnulla"
+          ? "Implement simple state management (e.g., a toggle button that shows/hides text)."
           : ""}
       </p>
     </div>

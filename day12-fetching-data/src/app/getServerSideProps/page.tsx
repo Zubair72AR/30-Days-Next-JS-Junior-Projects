@@ -1,9 +1,7 @@
-import Image from "next/image";
-
-export default function Home() {
+export default function getServerSideProps() {
   return (
     <div className="flex justify-center items-center h-screen">
-      <h1>Home Page</h1>
+      <h1>Get Server Side Props</h1>
     </div>
   );
 }

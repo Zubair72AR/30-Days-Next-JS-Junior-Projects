@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.navClass {
+  padding: 7px 15px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: white;
+  transition: 0.5s ease;
+}
+.navClass:hover {
+  color: dodgerblue;
+}
+.active {
+  padding: 7px 15px;
+  background-color: crimson;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: white;
+}
+
+.result p {
+  font-size: 1rem;
+  font-weight: 500;
+  color: gray;
+}
+.result span {
+  font-weight: 600;
+  color: #191970;
+}

@@ -18,7 +18,7 @@ export default function Navbar() {
           return (
             <li
               key={link.id}
-              className="py-6 px-10 text-white uppercase font-medium hover:text-blue-500"
+              className="py-6 px-10 text-white uppercase font-medium hover:text-blue-600"
             >
               <Link
                 href={link.path}

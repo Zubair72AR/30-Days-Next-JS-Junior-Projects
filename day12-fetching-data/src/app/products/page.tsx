@@ -15,14 +15,12 @@ interface ProductResponse {
 
 export default function Products() {
   const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
       const response = await fetch("https://dummyjson.com/products");
       const data: ProductResponse = await response.json();
       setProducts(data.products);
-      setLoading(false);
     };
 
     fetchProducts();

@@ -3,8 +3,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 let navLinks = [
   { id: 1, name: "Home", path: "/" },
-  { id: 2, name: "Get Static Props", path: "/getStaticProps" },
-  { id: 3, name: "Get Server Side Props", path: "/getServerSideProps" },
+  { id: 2, name: "Products", path: "/products" },
 ];
 
 export default function Navbar() {

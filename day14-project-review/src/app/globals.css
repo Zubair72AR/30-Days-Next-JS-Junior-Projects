@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.navClass {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.active {
+  font-weight: 600;
+  text-transform: uppercase;
+  color: crimson;
+}

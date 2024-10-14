@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
-import { LuLogIn } from "react-icons/lu";
+import { MdOutlineLogin } from "react-icons/md";
+import { CgProfile } from "react-icons/cg";
 
 let navLinks = [
   { id: 1, name: "Home", path: "/" },
@@ -15,32 +15,48 @@ export default function NavBar() {
   let isActive = (path: string) => path === usePath;
 
   return (
-    <nav className="flex justify-between items-center px-8 md:px-36 py-6  bg-slate-900 text-white">
+    <nav className="flex justify-between items-center px-8 md:px-24 py-6  bg-gray-900 text-white">
       <Link href="/">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={160}
-          height={38}
-        />
+        <h1 className="font-semibold text-4xl">
+          Zubair <span className="text-red-500">AR</span>
+        </h1>
       </Link>
       <ul className="flex justify-center items-center gap-6">
         {navLinks.map((item) => (
           <li key={item.id}>
             <Link
               href={item.path}
-              className={isActive(item.path) ? "active" : "navClass"}
+              className={
+                isActive(item.path)
+                  ? "font-medium uppercase text-red-500 border-b-[1px] py-[3px]"
+                  : "font-medium uppercase"
+              }
             >
               {item.name}
             </Link>
           </li>
         ))}
       </ul>
-      <Link href="/login" className="flex justify-center items-center gap-2">
-        <LuLogIn />
-        Log In
-      </Link>
+      <div className="flex justify-center items-center gap-2">
+        <button className="bg-red-500 py-[6px] px-4 font-normal hover:bg-white hover:text-red-500">
+          <Link
+            href="/login"
+            className="flex justify-center items-center gap-[5px]"
+          >
+            <MdOutlineLogin className="text-lg" />
+            Log In
+          </Link>
+        </button>
+        <button className="bg-red-500 py-[6px] px-4 font-normal hover:bg-white hover:text-red-500">
+          <Link
+            href="/signup"
+            className="flex justify-center items-center gap-[5px]"
+          >
+            <CgProfile className="text-lg" />
+            Sign Up
+          </Link>
+        </button>
+      </div>
     </nav>
   );
 }

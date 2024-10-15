@@ -1,5 +1,5 @@
 "use client";
-import renData from "@/components/RenderingMethod";
+import renData from "../../../components/Method";
 import Link from "next/link";
 
 export default function About() {
@@ -14,7 +14,7 @@ export default function About() {
             key={item.id}
             className="text-3xl font-bold text-gray-900 pl-8 my-6"
           >
-            <Link href={item.headings.toLowerCase()}>
+            <Link href={`/about/${item.headings.toLowerCase()}`}>
               {item.headings}{" "}
               <span className="text-lg font-normal">{item.fullForm}</span>
             </Link>

@@ -1,15 +1,16 @@
+"use client";
 import Typewriter from "typewriter-effect";
-import renData from "../../../../components/RenderingMethod";
+import renData from "../../../../components/Method";
 
-const Render = ({ params }: { params: { data: string } }) => {
-  const { data } = params;
-  const renderData = renData.find(
-    (e) => e.headings.toLowerCase() === data.toLowerCase()
+const Render = ({ params }: { params: { dataOfRender: string } }) => {
+  const { dataOfRender } = params;
+  const renderMethods = renData.find(
+    (c) => c.headings.toLowerCase() === dataOfRender
   );
 
-  if (!renderData) {
+  if (!renderMethods) {
     return (
-      <div className="max-w-96 m-auto my-20 px-8 py-4 rounded-2xl bg-red-700 text-center">
+      <div className="max-w-96 m-auto my-20 px-8 py-4 rounded-2xl bg-red-500 text-center shadow-lg">
         <h1 className="py-2 text-white font-bold text-2xl">
           Rendering Method not found
         </h1>
@@ -20,18 +21,16 @@ const Render = ({ params }: { params: { data: string } }) => {
       </div>
     );
   }
-
   return (
     <div>
-      <h1 className="text-center text-lg font-bold mt-6">
-        Methods of Rendering Web Applications
-      </h1>
       <div className="mx-auto mt-6 w-[500px] shadow-lg bg-red-500 pt-4 rounded-xl text-white overflow-hidden">
-        <h2 className="font-medium text-6xl text-center pb-2"></h2>
+        <h2 className="font-medium text-6xl text-center pb-2">
+          {renderMethods.headings}
+        </h2>
         <p className="text-center bg-gray-900 py-2">
           <Typewriter
             options={{
-              strings: ["Client Side Rendering"],
+              strings: [`${renderMethods.fullForm}`],
               autoStart: true,
               loop: true,
             }}
@@ -39,17 +38,8 @@ const Render = ({ params }: { params: { data: string } }) => {
         </p>
       </div>
       <div className="mx-auto mt-2 w-[500px] shadow-lg bg-white p-8 rounded-xl">
-        <p className="text-left">
-          In CSR, the browser downloads a minimal HTML page and a JavaScript
-          bundle that renders the content. This can result in slower initial
-          loading but provides a dynamic user experience after loading.
-        </p>
-        <p className="text-right mt-6">
-          CSR میں، براؤزر ایک کم سے کم HTML صفحہ اور ایک جاوا اسکرپٹ بنڈل ڈاؤن
-          لوڈ کرتا ہے جو مواد کو ظاہر کرتا ہے۔ اس کے نتیجے میں ابتدائی لوڈنگ میں
-          سستی ہو سکتی ہے لیکن اس کے بعد ایک متحرک صارف کے تجربے کی پیشکش ہوتی
-          ہے۔
-        </p>
+        <p className="text-left">{renderMethods.english}</p>
+        <p className="text-right mt-6">{renderMethods.urdu}</p>
       </div>
     </div>
   );

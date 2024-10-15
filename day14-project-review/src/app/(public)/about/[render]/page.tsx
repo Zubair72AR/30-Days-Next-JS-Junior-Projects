@@ -5,7 +5,7 @@ import renData from "../../../../components/Method";
 const Render = ({ params }: { params: { dataOfRender: string } }) => {
   const { dataOfRender } = params;
   const renderMethods = renData.find(
-    (c) => c.headings.toLowerCase() === dataOfRender
+    (c) => c.headings.toLowerCase() === dataOfRender.toLowerCase()
   );
 
   if (!renderMethods) {

@@ -7,6 +7,7 @@ const Render = ({ params }: { params: { dataOfRender: string } }) => {
   const renderMethods = renData.find(
     (c) => c.headings.toLowerCase() === dataOfRender.toLowerCase()
   );
+  console.log(renderMethods);
 
   if (!renderMethods) {
     return (

@@ -1,4 +1,6 @@
+"use client";
 import Link from "next/link";
+import FloatingLabelInput from "../../../components/InputField";
 import { FaXTwitter } from "react-icons/fa6";
 import {
   FaFacebookF,
@@ -38,7 +40,9 @@ export default function LogIn() {
             <FaXTwitter />
           </Link>
         </div>
+        <FloatingLabelInput />
       </div>
+
       <div className="w-full bg-red-500 p-6 lg:w-1/2">
         <h1>Sign in</h1>
       </div>

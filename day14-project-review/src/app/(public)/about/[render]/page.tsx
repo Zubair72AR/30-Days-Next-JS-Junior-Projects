@@ -2,10 +2,10 @@
 import Typewriter from "typewriter-effect";
 import renData from "../../../../components/Method";
 
-const Render = ({ params }: { params: { dataOfRender: string } }) => {
-  const { dataOfRender } = params;
+const Render = ({ params }: { params: { render: string } }) => {
+  const { render } = params;
   const renderMethods = renData.find(
-    (c) => c.headings.toLowerCase() === dataOfRender.toLowerCase()
+    (c) => c.headings.toLowerCase() === render.toLowerCase()
   );
   console.log(renderMethods);
 

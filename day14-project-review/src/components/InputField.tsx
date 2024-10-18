@@ -1,49 +1,120 @@
-import { useState, ChangeEvent, FocusEvent } from "react";
+"use client";
+import { useState } from "react";
 
-const FloatingLabelInput: React.FC = () => {
-  const [isFocused, setIsFocused] = useState<boolean>(false);
-  const [value, setValue] = useState<string>("");
+interface Submission {
+  name: string;
+  email: string;
+  message: string;
+}
 
-  const handleFocus = () => {
-    setIsFocused(true);
+export default function Form() {
+  let [name, setName] = useState<string>("");
+  let [email, setEmail] = useState<string>("");
+  let [message, setMessage] = useState<string>("");
+  let [isNameLength, setIsNameLength] = useState<boolean>(true);
+  let [isEmailLength, setIsEmailLength] = useState<boolean>(true);
+  let [isMessageLength, setIsMessageLength] = useState<boolean>(true);
+  let [submission, setSubmission] = useState<Submission | null>(null);
+
+  let handleForm = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    let newSubmission: Submission = {
+      name,
+      email,
+      message,
+    };
+
+    setSubmission(newSubmission);
   };
 
-  const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
-    if (!e.target.value) {
-      setIsFocused(false);
+  const handleName = (e: ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value;
+    setName(value);
+
+    if (value.length < 4) {
+      setIsNameLength(false);
+    } else {
+      setIsNameLength(true);
     }
   };
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-    setIsFocused(e.target.value.length > 0);
+  const handleEmail = (e: ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value;
+    setEmail(value);
+    if (value.length < 5) {
+      setIsEmailLength(false);
+    } else {
+      setIsEmailLength(true);
+    }
+  };
+
+  const handleMessage = (e: ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value;
+    setMessage(value);
+    if (value.length < 10) {
+      setIsMessageLength(false);
+    } else {
+      setIsMessageLength(true);
+    }
   };
 
   return (
-    <div className="relative mb-6">
-      <input
-        type="email"
-        id="email"
-        value={value}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        onChange={handleChange}
-        className={`block w-full px-0 py-2 border-b-2 border-gray-300 focus:border-blue-500 focus:outline-none transition-all duration-200 ${
-          isFocused || value ? "pt-6" : "pt-4"
-        }`}
-      />
-      <label
-        htmlFor="email"
-        className={`absolute left-0 top-2 transition-all duration-200 ease-in-out transform ${
-          isFocused || value
-            ? "text-blue-500 text-xs -translate-y-4"
-            : "text-gray-500"
-        }`}
-      >
-        Email
-      </label>
+    <div>
+      <form onSubmit={handleForm}>
+        <h2>Contact Us</h2>
+        <div>
+          <label>
+            Name <span>*</span>
+          </label>
+          <input
+            type="text"
+            name="name"
+            placeholder="Enter here"
+            required
+            onChange={handleName}
+          />
+          {!isNameLength && (
+            <p className="minimum">Minimum length required is 4</p>
+          )}
+        </div>
+        <div>
+          <label>
+            Email <span>*</span>
+          </label>
+          <input
+            type="text"
+            name="email"
+            placeholder="Enter here"
+            required
+            onChange={handleEmail}
+          />
+          {!isEmailLength && (
+            <p className="minimum">Minimum length required is 5</p>
+          )}
+        </div>
+        <div>
+          <label>
+            Message <span>*</span>
+          </label>
+          <textarea
+            placeholder="Enter here"
+            required
+            rows={4}
+            onChange={handleMessage}
+          />
+          {!isMessageLength && (
+            <p className="minimum">Minimum length required is 10</p>
+          )}
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+      {submission && (
+        <div className="output">
+          <h2>Submitted Data</h2>
+          <pre>{JSON.stringify(submission, null, 2)}</pre>
+        </div>
+      )}
     </div>
   );
-};
-
-export default FloatingLabelInput;
+}

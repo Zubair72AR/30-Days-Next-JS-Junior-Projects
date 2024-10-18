@@ -8,6 +8,7 @@ let navLinks = [
   { id: 1, name: "Home", path: "/" },
   { id: 2, name: "Next JS", path: "/about" },
   { id: 3, name: "Career", path: "/career" },
+  { id: 4, name: "IT Website", path: "/gsindh" },
 ];
 
 export default function NavBar() {

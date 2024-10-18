@@ -13,36 +13,42 @@ import {
 interface LoginSubmission {
   fName: string;
   lName: string;
-  userName: string;
+  emailName: string;
   password: string;
 }
 
 export default function LogIn() {
   let [fName, setFName] = useState<string>("");
   let [lName, setLName] = useState<string>("");
-  let [userName, setUserName] = useState<string>("");
+  let [emailName, setEmailName] = useState<string>("");
   let [password, setPassword] = useState<string>("");
   let [LengthFName, setLengthFName] = useState<boolean>(true);
   let [LengthLName, setLengthLName] = useState<boolean>(true);
-  let [LengthUserName, setLengthUserName] = useState<boolean>(true);
+  let [LengthEmailName, setLengthEmailName] = useState<boolean>(true);
   let [lengthPassword, setLengthPassword] = useState<boolean>(true);
 
   let [submission, setSubmission] = useState<LoginSubmission | null>(null);
   let submitHandling = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Submitted...");
+
     let NewSubmission: LoginSubmission = {
       fName,
       lName,
-      userName,
+      emailName,
       password,
     };
 
-    if (NewSubmission.userName.length < 4) {
-      alert("Username must be at least 4 characters long.");
+    if (NewSubmission.fName.length < 4) {
+      alert("First Name must be at least 4 characters long.");
       return;
-    } else if (NewSubmission.password.length < 5) {
-      alert("Password must be at least 5 characters long.");
+    } else if (NewSubmission.lName.length < 4) {
+      alert("Last Name must be at least 4 characters long.");
+      return;
+    } else if (NewSubmission.emailName.length < 12) {
+      alert("Email must be at least 12 characters long.");
+      return;
+    } else if (NewSubmission.password.length < 10) {
+      alert("Password must be at least 10 characters long.");
       return;
     } else {
       setSubmission(NewSubmission);
@@ -51,8 +57,7 @@ export default function LogIn() {
   let fNameHandler = (e: ChangeEvent<HTMLFormElement>) => {
     let fNameValue = e.target.value;
     setFName(fNameValue);
-
-    if (fNameValue.length < 12) {
+    if (fNameValue.length < 4) {
       setLengthFName(false);
     } else {
       setLengthFName(true);
@@ -62,26 +67,26 @@ export default function LogIn() {
     let lNameValue = e.target.value;
     setLName(lNameValue);
 
-    if (lNameValue.length < 18) {
+    if (lNameValue.length < 4) {
       setLengthLName(false);
     } else {
       setLengthLName(true);
     }
   };
-  let UserNameHandler = (e: ChangeEvent<HTMLFormElement>) => {
-    let userValue = e.target.value;
-    setUserName(userValue);
+  let EmailNameHandler = (e: ChangeEvent<HTMLFormElement>) => {
+    let emailNameValue = e.target.value;
+    setEmailName(emailNameValue);
 
-    if (userValue.length < 4) {
-      setLengthUserName(false);
+    if (emailNameValue.length < 12) {
+      setLengthEmailName(false);
     } else {
-      setLengthUserName(true);
+      setLengthEmailName(true);
     }
   };
   let PasswordHandler = (e: ChangeEvent<HTMLFormElement>) => {
     let passwordValue = e.target.value;
     setPassword(passwordValue);
-    if (passwordValue.length < 5) {
+    if (passwordValue.length < 10) {
       setLengthPassword(false);
     } else {
       setLengthPassword(true);
@@ -89,7 +94,7 @@ export default function LogIn() {
   };
   return (
     <div>
-      <div className="bg-image justify-center items-center m-auto my-6 rounded-2xl  overflow-hidden shadow-lg w-2/3 lg:flex">
+      <div className="bg-image justify-center items-center m-auto my-8 rounded-2xl  overflow-hidden shadow-md w-2/3 lg:flex">
         <div className="w-full p-6 lg:w-1/2 text-white text-center">
           <h1 className="text-2xl my-6">
             Welcome to
@@ -103,9 +108,20 @@ export default function LogIn() {
           >
             <Link href="/login">Sign In</Link>
           </button>
+          <p className="text-red-300 text-xs text-center mt-6">
+            &copy; 2001-2024 All Rights Reserved
+            <br />
+            <Link href="#" className="text-red-200 underline font-medium">
+              Privacy
+            </Link>{" "}
+            and{" "}
+            <Link href="#" className="text-red-200 underline font-medium">
+              Terms
+            </Link>
+          </p>
         </div>
         <div className="w-full bg-white px-10 py-12 lg:w-1/2">
-          <h1 className="text-center font-bold text-4xl text-gray-900 mb-6">
+          <h1 className="text-center font-bold text-3xl text-gray-900 mb-6">
             Create Account
           </h1>
           <div className="flex justify-center items-center gap-2">
@@ -153,62 +169,62 @@ export default function LogIn() {
                   htmlFor="fName"
                   className="text-gray-900 mt-4 font-medium"
                 >
-                  First Name
+                  First Name <span className="text-red-600">*</span>
                 </label>
                 <input
                   type="text"
-                  placeholder="First Name*"
+                  placeholder="First Name"
                   required
                   className="outline-none border-gray-200 bg-gray-100 border-[1px] px-3 py-2 mt-1 rounded-md w-[100%]"
                   onChange={fNameHandler}
                 />
                 {!LengthFName && (
                   <p className="text-red-700 text-xs">
-                    Minimum 5 characters long.
+                    Minimum 4 characters long.
                   </p>
                 )}
               </div>
               <div className="flex flex-col">
                 <label
-                  htmlFor="fName"
+                  htmlFor="LName"
                   className="text-gray-900 mt-4 font-medium"
                 >
-                  First Name
+                  Last Name <span className="text-red-600">*</span>
                 </label>
                 <input
                   type="text"
-                  placeholder="First Name*"
+                  placeholder="Last Name"
                   required
                   className="outline-none border-gray-200 bg-gray-100 border-[1px] px-3 py-2 mt-1 rounded-md w-[100%]"
                   onChange={lNameHandler}
                 />
                 {!LengthLName && (
                   <p className="text-red-700 text-xs">
-                    Minimum 5 characters long.
+                    Minimum 4 characters long.
                   </p>
                 )}
               </div>
             </div>
             <label htmlFor="email" className="text-gray-900 mt-4 font-medium">
-              Username
+              Email ID <span className="text-red-600">*</span>
             </label>
             <input
               type="text"
               placeholder="Email or Phone"
               required
               className="outline-none border-gray-200 bg-gray-100 border-[1px] px-3 py-2 mt-1 rounded-md"
-              onChange={UserNameHandler}
+              onChange={EmailNameHandler}
             />
-            {!LengthUserName && (
+            {!LengthEmailName && (
               <p className="text-red-700 text-xs">
-                Username should be at least 5 characters long.
+                Email should be at least 12 characters long.
               </p>
             )}
             <label
               htmlFor="password"
               className="text-gray-900 mt-4 font-medium"
             >
-              Password
+              Password <span className="text-red-600">*</span>
             </label>
             <input
               type="password"
@@ -219,35 +235,21 @@ export default function LogIn() {
             />
             {!lengthPassword && (
               <p className="text-red-700 text-xs">
-                Password should be at least 5 characters long.
+                Password should be at least 10 characters long.
               </p>
             )}
             <button
               type="submit"
               className="w-full bg-red-500 py-2 text-white mt-4 font-medium uppercase rounded-md shadow-sm hover:bg-red-600 transition-all"
             >
-              Sign in
+              Sign Up
             </button>
           </form>
-          <Link href="#" className="text-blue-600 text-sm">
-            Forgot your password?
-          </Link>
-          <p className="text-gray-500 text-xs text-center mt-6">
-            &copy; 2001-2024 All Rights Reserved
-            <br />
-            <Link href="#" className="text-gray-700 underline font-medium">
-              Privacy
-            </Link>{" "}
-            and{" "}
-            <Link href="#" className="text-gray-700 underline font-medium">
-              Terms
-            </Link>
-          </p>
         </div>
       </div>
       {submission && (
         <div className="flex flex-col justify-center items-center m-auto w-1/2 mb-12 p-6 bg-gray-900 text-white rounded-2xl">
-          <h2 className="uppercase font-bold">UserName and Password OutPut</h2>
+          <h2 className="uppercase font-bold">New User Data Output</h2>
           <pre>{JSON.stringify(submission, null, 2)}</pre>
         </div>
       )}

@@ -24,7 +24,7 @@ export default function LogIn() {
   let [submission, setSubmission] = useState<LoginSubmission | null>(null);
   let submitHandling = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Submitted...");
+
     let NewSubmission: LoginSubmission = {
       userName,
       password,
@@ -61,9 +61,9 @@ export default function LogIn() {
   };
   return (
     <div>
-      <div className="bg-image justify-center items-center m-auto my-6 rounded-2xl  overflow-hidden shadow-lg w-2/3 lg:flex">
+      <div className="bg-image justify-center items-center m-auto my-8 rounded-2xl  overflow-hidden shadow-md w-2/3 lg:flex">
         <div className="w-full bg-white px-10 py-12 lg:w-1/2">
-          <h1 className="text-center font-bold text-4xl text-gray-900 mb-6">
+          <h1 className="text-center font-bold text-3xl text-gray-900 mb-6">
             Sign in
           </h1>
           <div className="flex justify-center items-center gap-2">
@@ -148,17 +148,6 @@ export default function LogIn() {
           <Link href="#" className="text-blue-600 text-sm">
             Forgot your password?
           </Link>
-          <p className="text-gray-500 text-xs text-center mt-6">
-            &copy; 2001-2024 All Rights Reserved
-            <br />
-            <Link href="#" className="text-gray-700 underline font-medium">
-              Privacy
-            </Link>{" "}
-            and{" "}
-            <Link href="#" className="text-gray-700 underline font-medium">
-              Terms
-            </Link>
-          </p>
         </div>
         <div className="w-full p-6 lg:w-1/2 text-white text-center">
           <h1 className="text-2xl my-6">
@@ -173,6 +162,17 @@ export default function LogIn() {
           >
             <Link href="/signup">Sign Up</Link>
           </button>
+          <p className="text-red-300 text-xs text-center mt-6">
+            &copy; 2001-2024 All Rights Reserved
+            <br />
+            <Link href="#" className="text-red-200 underline font-medium">
+              Privacy
+            </Link>{" "}
+            and{" "}
+            <Link href="#" className="text-red-200 underline font-medium">
+              Terms
+            </Link>
+          </p>
         </div>
       </div>
       {submission && (

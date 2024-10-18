@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function About() {
   return (
-    <div className="mt-12 bg-white w-[500px] m-auto rounded-xl shadow-lg overflow-hidden">
+    <div className="mt-12 bg-white w-[500px] m-auto rounded-xl shadow-md overflow-hidden">
       <h1 className="text-lg font-bold text-white text-center py-6 bg-red-500">
         Methods of Rendering Web Applications
       </h1>
